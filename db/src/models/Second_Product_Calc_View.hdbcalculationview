@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="db.models::Second_Product_Calc_View" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="db.models::Second_Product_Calc_View" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="Second_Product_Calc_View"/>
 <localVariables>
   <variable id="VAR_PRICE">
@@ -14,12 +14,25 @@
 </localVariables>
 <variableMappings/>
 <dataSources>
+  <DataSource id="MD.Addresses">
+    <resourceUri>MD.Addresses</resourceUri>
+  </DataSource>
+  <DataSource id="MD.BusinessPartner">
+    <resourceUri>MD.BusinessPartner</resourceUri>
+  </DataSource>
   <DataSource id="MD.Products">
     <resourceUri>MD.Products</resourceUri>
   </DataSource>
 </dataSources>
-<calculationViews/>
-<logicalModel id="MD.Products" filterExpressionLanguage="SQL">
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes/>
+    <calculatedViewAttributes/>
+    <input node="MD.Addresses"/>
+    <input node="MD.BusinessPartner"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="MD.Products">
   <attributes>
     <attribute id="PRODUCTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Product ID"/>
@@ -99,7 +112,14 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+      <upperLeftCorner x="91.99999999999997" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="303.99999999999994" y="87"/>
+      <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>
 </layout>
