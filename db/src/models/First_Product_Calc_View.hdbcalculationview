@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="db.models::First_Product_Calc_View" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="First_Product_Calc_View"/>
+<localVariables>
+  <variable id="Price" parameter="true">
+    <descriptions defaultDescription="Price Filter"/>
+    <variableProperties datatype="DECIMAL" length="15" mandatory="true" defaultValue="100">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="MD.Products">
+    <resourceUri>MD.Products</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="MD.Products" filterExpressionLanguage="SQL">
+  <attributes>
+    <attribute id="PRODUCTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product ID"/>
+      <keyMapping columnObjectName="MD.Products" columnName="PRODUCTID"/>
+    </attribute>
+    <attribute id="TYPECODE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Type Code"/>
+      <keyMapping columnObjectName="MD.Products" columnName="TYPECODE"/>
+    </attribute>
+    <attribute id="CATEGORY" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product Category"/>
+      <keyMapping columnObjectName="MD.Products" columnName="CATEGORY"/>
+    </attribute>
+    <attribute id="NAMEID" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product Name"/>
+      <keyMapping columnObjectName="MD.Products" columnName="NAMEID"/>
+    </attribute>
+    <attribute id="DESCID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product Description"/>
+      <keyMapping columnObjectName="MD.Products" columnName="DESCID"/>
+    </attribute>
+    <attribute id="SUPPLIER_PARTNERID" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Supplier Association"/>
+      <keyMapping columnObjectName="MD.Products" columnName="SUPPLIER.PARTNERID"/>
+    </attribute>
+    <attribute id="TAXTARIFFCODE" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Tax Tariff Code"/>
+      <keyMapping columnObjectName="MD.Products" columnName="TAXTARIFFCODE"/>
+    </attribute>
+    <attribute id="QUANTITYUNIT" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Quantity Unit"/>
+      <keyMapping columnObjectName="MD.Products" columnName="QUANTITYUNIT"/>
+    </attribute>
+    <attribute id="WEIGHTMEASURE" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Weight"/>
+      <keyMapping columnObjectName="MD.Products" columnName="WEIGHTMEASURE"/>
+    </attribute>
+    <attribute id="WEIGHTUNIT" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Weight Unit"/>
+      <keyMapping columnObjectName="MD.Products" columnName="WEIGHTUNIT"/>
+    </attribute>
+    <attribute id="CURRENCY" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Currency"/>
+      <keyMapping columnObjectName="MD.Products" columnName="CURRENCY"/>
+    </attribute>
+    <attribute id="PRICE" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Price"/>
+      <keyMapping columnObjectName="MD.Products" columnName="PRICE"/>
+    </attribute>
+    <attribute id="PRODUCTPICURL" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Product Picture URL"/>
+      <keyMapping columnObjectName="MD.Products" columnName="PRODUCTPICURL"/>
+    </attribute>
+    <attribute id="WIDTH" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Width"/>
+      <keyMapping columnObjectName="MD.Products" columnName="WIDTH"/>
+    </attribute>
+    <attribute id="DEPTH" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Depth"/>
+      <keyMapping columnObjectName="MD.Products" columnName="DEPTH"/>
+    </attribute>
+    <attribute id="HEIGHT" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Height"/>
+      <keyMapping columnObjectName="MD.Products" columnName="HEIGHT"/>
+    </attribute>
+    <attribute id="DIMENSIONUNIT" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Dimension Unit"/>
+      <keyMapping columnObjectName="MD.Products" columnName="DIMENSIONUNIT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+
+  <filter>&quot;PRICE&quot;&gt;='$$Price$$'</filter>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
